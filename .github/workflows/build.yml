@@ -11,13 +11,8 @@ jobs:
       - name: install java
         run: sudo apt install -y default-jre
       - name: build
-        run: ./gradlew buildPlugin && cd build/distributions && ls -la && pwd
+        run: ./gradlew buildPlugin
       - name: release
-        uses: svenstaro/upload-release-action@v2
+        uses: actions/upload-artifact@v2.2.3
         with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: /home/runner/work/intellij-qml/intellij-qml/build/distributions/intellij-qml-0.3.3.zip
-          asset_name: intellij-qml-0.3.3.zip
-          tag: ${{ github.ref }}
-          overwrite: true
-          body: "First release"
+          path: build/distributions

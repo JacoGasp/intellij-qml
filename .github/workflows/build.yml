@@ -5,8 +5,9 @@ on:
       
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - name: install java
         run: sudo apt install -y default-jre
       - name: build

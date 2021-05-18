@@ -11,5 +11,5 @@ jobs:
       - name: install java
         run: sudo apt install -y default-jre
       - name: build
-        run: ./gradlew buildPlugin && ls -la
+        run: ./gradlew buildPlugin && ls -la build
   

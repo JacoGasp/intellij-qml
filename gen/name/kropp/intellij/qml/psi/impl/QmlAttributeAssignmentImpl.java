@@ -21,6 +21,7 @@ public class QmlAttributeAssignmentImpl extends ASTWrapperPsiElement implements 
     visitor.visitAttributeAssignment(this);
   }
 
+  @Override
   public void accept(@NotNull PsiElementVisitor visitor) {
     if (visitor instanceof QmlVisitor) accept((QmlVisitor)visitor);
     else super.accept(visitor);

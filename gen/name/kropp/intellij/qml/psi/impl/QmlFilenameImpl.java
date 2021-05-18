@@ -13,7 +13,7 @@ import name.kropp.intellij.qml.psi.*;
 
 public class QmlFilenameImpl extends QmlFilenameMixin implements QmlFilename {
 
-  public QmlFilenameImpl(@NotNull ASTNode node) {
+  public QmlFilenameImpl(ASTNode node) {
     super(node);
   }
 
@@ -21,14 +21,10 @@ public class QmlFilenameImpl extends QmlFilenameMixin implements QmlFilename {
     visitor.visitFilename(this);
   }
 
+  @Override
   public void accept(@NotNull PsiElementVisitor visitor) {
     if (visitor instanceof QmlVisitor) accept((QmlVisitor)visitor);
     else super.accept(visitor);
-  }
-
-  @NotNull
-  public QmlFilename updateText(@NotNull String newText) {
-    return QmlPsiImplUtil.updateText(this, newText);
   }
 
 }

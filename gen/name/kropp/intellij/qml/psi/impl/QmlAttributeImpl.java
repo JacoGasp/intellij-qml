@@ -21,6 +21,7 @@ public class QmlAttributeImpl extends ASTWrapperPsiElement implements QmlAttribu
     visitor.visitAttribute(this);
   }
 
+  @Override
   public void accept(@NotNull PsiElementVisitor visitor) {
     if (visitor instanceof QmlVisitor) accept((QmlVisitor)visitor);
     else super.accept(visitor);

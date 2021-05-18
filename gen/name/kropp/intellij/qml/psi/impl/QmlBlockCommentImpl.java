@@ -21,6 +21,7 @@ public class QmlBlockCommentImpl extends ASTWrapperPsiElement implements QmlBloc
     visitor.visitBlockComment(this);
   }
 
+  @Override
   public void accept(@NotNull PsiElementVisitor visitor) {
     if (visitor instanceof QmlVisitor) accept((QmlVisitor)visitor);
     else super.accept(visitor);

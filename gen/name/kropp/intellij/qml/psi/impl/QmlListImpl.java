@@ -21,6 +21,7 @@ public class QmlListImpl extends ASTWrapperPsiElement implements QmlList {
     visitor.visitList(this);
   }
 
+  @Override
   public void accept(@NotNull PsiElementVisitor visitor) {
     if (visitor instanceof QmlVisitor) accept((QmlVisitor)visitor);
     else super.accept(visitor);

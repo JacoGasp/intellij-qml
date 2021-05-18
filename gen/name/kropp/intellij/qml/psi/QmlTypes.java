@@ -69,7 +69,7 @@ public interface QmlTypes {
   class Factory {
     public static PsiElement createElement(ASTNode node) {
       IElementType type = node.getElementType();
-       if (type == ARGUMENT) {
+      if (type == ARGUMENT) {
         return new QmlArgumentImpl(node);
       }
       else if (type == ATTRIBUTE) {

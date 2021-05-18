@@ -23,94 +23,15 @@ public class QmlParser implements PsiParser, LightPsiParser {
     boolean r;
     b = adapt_builder_(t, b, this, null);
     Marker m = enter_section_(b, 0, _COLLAPSE_, null);
-    if (t == ARGUMENT) {
-      r = argument(b, 0);
-    }
-    else if (t == ATTRIBUTE) {
-      r = attribute(b, 0);
-    }
-    else if (t == ATTRIBUTE_ASSIGNMENT) {
-      r = attribute_assignment(b, 0);
-    }
-    else if (t == BLOCK_COMMENT) {
-      r = block_comment(b, 0);
-    }
-    else if (t == BODY) {
-      r = body(b, 0);
-    }
-    else if (t == FILENAME) {
-      r = filename(b, 0);
-    }
-    else if (t == IMPORT) {
-      r = import_$(b, 0);
-    }
-    else if (t == IMPORTS) {
-      r = imports(b, 0);
-    }
-    else if (t == JAVASCRIPT) {
-      r = javascript(b, 0);
-    }
-    else if (t == LINE_COMMENT) {
-      r = line_comment(b, 0);
-    }
-    else if (t == LIST) {
-      r = list(b, 0);
-    }
-    else if (t == METHOD) {
-      r = method(b, 0);
-    }
-    else if (t == METHOD_ATTRIBUTE) {
-      r = method_attribute(b, 0);
-    }
-    else if (t == METHOD_BODY) {
-      r = method_body(b, 0);
-    }
-    else if (t == METHOD_CALL) {
-      r = method_call(b, 0);
-    }
-    else if (t == MODULE) {
-      r = module(b, 0);
-    }
-    else if (t == OBJECT) {
-      r = object(b, 0);
-    }
-    else if (t == PARAMETER) {
-      r = parameter(b, 0);
-    }
-    else if (t == PRAGMA) {
-      r = pragma(b, 0);
-    }
-    else if (t == PROPERTY) {
-      r = property(b, 0);
-    }
-    else if (t == PROPERTY_DEFINITION) {
-      r = property_definition(b, 0);
-    }
-    else if (t == QUALIFIER) {
-      r = qualifier(b, 0);
-    }
-    else if (t == SIGNAL) {
-      r = signal(b, 0);
-    }
-    else if (t == SIGNAL_DEFINITION) {
-      r = signal_definition(b, 0);
-    }
-    else if (t == SIGNAL_PARAMETER) {
-      r = signal_parameter(b, 0);
-    }
-    else if (t == TYPE) {
-      r = type(b, 0);
-    }
-    else if (t == VERSION) {
-      r = version(b, 0);
-    }
-    else {
-      r = parse_root_(t, b, 0);
-    }
+    r = parse_root_(t, b);
     exit_section_(b, 0, m, t, r, true, TRUE_CONDITION);
   }
 
-  protected boolean parse_root_(IElementType t, PsiBuilder b, int l) {
+  protected boolean parse_root_(IElementType t, PsiBuilder b) {
+    return parse_root_(t, b, 0);
+  }
+
+  static boolean parse_root_(IElementType t, PsiBuilder b, int l) {
     return qml(b, l + 1);
   }
 
@@ -257,10 +178,8 @@ public class QmlParser implements PsiParser, LightPsiParser {
     if (!recursion_guard_(b, l, "boolean_$")) return false;
     if (!nextTokenIs(b, "", FALSE, TRUE)) return false;
     boolean r;
-    Marker m = enter_section_(b);
     r = consumeToken(b, TRUE);
     if (!r) r = consumeToken(b, FALSE);
-    exit_section_(b, m, null, r);
     return r;
   }
 
@@ -688,11 +607,9 @@ public class QmlParser implements PsiParser, LightPsiParser {
   private static boolean property_definition_3(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "property_definition_3")) return false;
     boolean r;
-    Marker m = enter_section_(b);
     r = consumeToken(b, KEYWORD_ALIAS);
     if (!r) r = consumeToken(b, KEYWORD_VAR);
     if (!r) r = type(b, l + 1);
-    exit_section_(b, m, null, r);
     return r;
   }
 
@@ -837,10 +754,8 @@ public class QmlParser implements PsiParser, LightPsiParser {
   private static boolean signal_parameter_0(PsiBuilder b, int l) {
     if (!recursion_guard_(b, l, "signal_parameter_0")) return false;
     boolean r;
-    Marker m = enter_section_(b);
     r = consumeToken(b, KEYWORD_VAR);
     if (!r) r = type(b, l + 1);
-    exit_section_(b, m, null, r);
     return r;
   }
 

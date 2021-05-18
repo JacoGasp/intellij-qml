@@ -21,6 +21,7 @@ public class QmlQualifierImpl extends ASTWrapperPsiElement implements QmlQualifi
     visitor.visitQualifier(this);
   }
 
+  @Override
   public void accept(@NotNull PsiElementVisitor visitor) {
     if (visitor instanceof QmlVisitor) accept((QmlVisitor)visitor);
     else super.accept(visitor);

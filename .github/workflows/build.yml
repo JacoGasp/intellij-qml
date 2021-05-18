@@ -16,7 +16,7 @@ jobs:
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: /home/runner/work/intellij-qml/intellij-qml/build/distributions/*.zip
+          file: /home/runner/work/intellij-qml/intellij-qml/build/distributions/intellij-qml-0.3.3.zip
           asset_name: blackjack-linux
           tag: ${{ github.ref }}
           overwrite: true

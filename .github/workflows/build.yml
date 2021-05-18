@@ -11,12 +11,12 @@ jobs:
       - name: install java
         run: sudo apt install -y default-jre
       - name: build
-        run: ./gradlew buildPlugin && ls -la build
+        run: ./gradlew buildPlugin && ls -la build/distributions
       - name: release
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: /home/runner/work/intellij-qml/build/distributions/
+          file: /home/runner/work/intellij-qml/intellij-qml/build/distributions/*
           asset_name: blackjack-linux
           tag: ${{ github.ref }}
           overwrite: true
